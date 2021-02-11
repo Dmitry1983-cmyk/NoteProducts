@@ -1,6 +1,7 @@
 package com.example.testnoteproducts;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -20,19 +21,21 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Removeable {
     ListView productsList;
-    ArrayList<String> products =new ArrayList<>() ;
+    ArrayList<String> products;
 
     Calendar dateAndTime=Calendar.getInstance();
     TextView currentTime,currentDate,txt_product,txt_price;
     Button btn_setDate,btn_setTime,btn_addProduct;
+    ArrayAdapter<String> adapter ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        products =new ArrayList<>() ;
         btn_setDate=findViewById(R.id.btn_SetDate);
         btn_setTime=findViewById(R.id.btn_SetTime);
         btn_addProduct=findViewById(R.id.btn_AddProduct);
@@ -45,16 +48,35 @@ public class MainActivity extends AppCompatActivity {
         products.add("Apple:45");
         products.add("Orange:45");
         products.add("Banana:35");
-        ArrayAdapter<String> adapter = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, products);
+        adapter = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, products);
         productsList.setAdapter(adapter);
+
+        /*----------------------------Remove Item ----------------------------------*/
+//        productsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Toast.makeText(getApplicationContext(), products.get(position), Toast.LENGTH_LONG).show();
+//                products.remove(products.get(position));
+//            }
+//        });
+        /*----------------------------end Remove Item ----------------------------------*/
+
+        /*----------------------------show Modal window ----------------------------------*/
 
         productsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(), products.get(position), Toast.LENGTH_LONG).show();
-                products.remove(products.get(position));
+                String selectedProduct = adapter.getItem(position);
+                ModalWindow dialog = new ModalWindow();
+                Bundle args = new Bundle();
+                args.putString("product", selectedProduct);
+                dialog.setArguments(args);
+                dialog.show(getSupportFragmentManager(), "custom");
+
             }
         });
+        /*----------------------------end show Modal window ----------------------------------*/
+
 
         setInitialTime();
         setInitialDate();
@@ -148,4 +170,10 @@ public class MainActivity extends AppCompatActivity {
         productsList.setAdapter(adapter);
     }
     /*----------------------------end add Product ----------------------------------*/
+
+    @Override
+    public void remove(String name) {
+        adapter.remove(name);
+    }remove
+
 }
