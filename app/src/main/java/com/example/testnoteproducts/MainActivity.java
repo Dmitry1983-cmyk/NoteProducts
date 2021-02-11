@@ -162,18 +162,20 @@ public class MainActivity extends AppCompatActivity implements Removeable {
 
     /*----------------------------add Product ----------------------------------*/
     public void addProductsmethod(View v){
-        products.add(txt_product.getText().toString()+ " / " +currentDate.getText()  +" / " + currentTime.getText()+":"+ txt_price.getText().toString());
+        products.add(txt_product.getText().toString()+ " / " +currentDate.getText()  +" / " + currentTime.getText()+"/ Price :"+ txt_price.getText().toString()+"hrn");
         txt_price.setText("");
         txt_product.setText("");
 
-        ArrayAdapter<String> adapter = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, products);
-        productsList.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+        btn_setTime.setEnabled(false);
+        btn_addProduct.setEnabled(false);
+        btn_setDate.setEnabled(true);
     }
     /*----------------------------end add Product ----------------------------------*/
 
     @Override
     public void remove(String name) {
         adapter.remove(name);
-    }remove
+    }
 
 }
