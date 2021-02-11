@@ -86,9 +86,9 @@ public class MainActivity extends AppCompatActivity {
                 dateAndTime.get(Calendar.HOUR_OF_DAY),
                 dateAndTime.get(Calendar.MINUTE),
                 true).show();
-//        btn_setDate.setEnabled(false);
-//        btn_setTime.setEnabled(false);
-//        btn_addProduct.setEnabled(true);
+        btn_setDate.setEnabled(false);
+        btn_setTime.setEnabled(false);
+        btn_addProduct.setEnabled(true);
     }
     private void setInitialTime(){
         currentTime.setText(DateUtils.formatDateTime(this,dateAndTime.getTimeInMillis(),DateUtils.FORMAT_SHOW_TIME));
@@ -106,15 +106,21 @@ public class MainActivity extends AppCompatActivity {
 
     /*----------------------------set Date ----------------------------------*/
     public void setDate(View v){
-        new DatePickerDialog(MainActivity.this,
-                d,
-                dateAndTime.get(Calendar.YEAR),
-                dateAndTime.get(Calendar.MONTH),
-                dateAndTime.get(Calendar.DAY_OF_MONTH)).show();
+        if(txt_product.getText().length()!=0 && txt_price.getText().length()!=0){
+            new DatePickerDialog(MainActivity.this,
+                    d,
+                    dateAndTime.get(Calendar.YEAR),
+                    dateAndTime.get(Calendar.MONTH),
+                    dateAndTime.get(Calendar.DAY_OF_MONTH)).show();
 
-//        btn_setDate.setEnabled(false);
-//        btn_setTime.setEnabled(false);
-//        btn_addProduct.setEnabled(true);
+            btn_setDate.setEnabled(false);
+            btn_setTime.setEnabled(true);
+            btn_addProduct.setEnabled(false);
+        }
+        else {
+            Toast.makeText(this,"У вас пустое поле",Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     DatePickerDialog.OnDateSetListener d= new DatePickerDialog.OnDateSetListener() {

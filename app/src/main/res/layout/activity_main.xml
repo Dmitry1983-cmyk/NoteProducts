@@ -58,6 +58,7 @@
             android:layout_weight="1"
 
             android:background="@drawable/my_btn"
+            android:enabled="false"
             android:onClick="addProductsmethod"
             android:padding="10dp"
             android:text="Добавить"
@@ -98,6 +99,7 @@
 
             android:background="@drawable/time_btn"
 
+            android:enabled="false"
             android:onClick="setTime"
             android:padding="10dp"
             android:text="Установить время"
