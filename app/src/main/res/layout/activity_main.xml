@@ -89,7 +89,7 @@
             android:padding="10dp"
             android:text="Установить дату"
             android:textColor="#ffffff"
-            android:textSize="12sp" />
+            android:textSize="10sp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_SetTime"
@@ -104,7 +104,18 @@
             android:padding="10dp"
             android:text="Установить время"
             android:textColor="#ffffff"
-            android:textSize="12sp" />
+            android:textSize="10sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_addgains"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:background="@drawable/date_btn"
+            android:onClick="addGains"
+            android:text="внести доход"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
     </LinearLayout>
 
     <TextView

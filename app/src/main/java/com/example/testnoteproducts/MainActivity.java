@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentManager;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.format.DateUtils;
@@ -18,6 +19,9 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -111,6 +115,7 @@ public class MainActivity extends AppCompatActivity implements Removeable {
         btn_setDate.setEnabled(false);
         btn_setTime.setEnabled(false);
         btn_addProduct.setEnabled(true);
+
     }
     private void setInitialTime(){
         currentTime.setText(DateUtils.formatDateTime(this,dateAndTime.getTimeInMillis(),DateUtils.FORMAT_SHOW_TIME));
@@ -167,6 +172,7 @@ public class MainActivity extends AppCompatActivity implements Removeable {
         txt_product.setText("");
 
         adapter.notifyDataSetChanged();
+
         btn_setTime.setEnabled(false);
         btn_addProduct.setEnabled(false);
         btn_setDate.setEnabled(true);
@@ -178,4 +184,64 @@ public class MainActivity extends AppCompatActivity implements Removeable {
         adapter.remove(name);
     }
 
+    public void addGains(View view){
+        /*-------------------next activity*/
+        Intent intent = new Intent(this, FinanceActivity.class);
+//        String user_weight = txtWeight.getText().toString();
+//        String user_grow=txtGrow.getText().toString();
+//        String user_sex=getsex;
+//        intent.putExtra("user_weight", user_weight);
+//        intent.putExtra("user_grow", user_grow);
+//        intent.putExtra("user_sex", user_sex);
+        startActivity(intent);
+        /*-------------------end next activity*/
+    }
+
 }
+
+/*
+    public void saveText(View v){
+        FileOutputStream fos = null;
+        try {
+                fos = openFileOutput(FILE_NAME, MODE_PRIVATE);
+                fos.write(((EditText)findViewById(R.id.editText)).getText().toString().getBytes());
+                Toast.makeText(getApplicationContext(), "SAVED!", Toast.LENGTH_SHORT).show();
+        } catch (FileNotFoundException e) {
+            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+        } finally {
+            try {
+                if(fos != null)
+                    fos.close();
+
+            } catch (IOException e) {
+                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    public void readText(View v){
+        FileInputStream fin = null;
+        try {
+            fin = openFileInput(FILE_NAME);
+            byte[] bytes = new byte[fin.available()];
+            fin.read(bytes);
+            String str = new String(bytes);
+            ((TextView)findViewById(R.id.textView)).setText(str);
+        } catch (FileNotFoundException e) {
+            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+        } finally {
+            try {
+                if(fin != null)
+                    fin.close();
+
+            } catch (IOException e) {
+                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+*/

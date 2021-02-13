@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FinanceActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Название доходов"
+            android:textColor="@color/teal_700"
+            android:textSize="10sp" />
+
+        <EditText
+            android:id="@+id/txtnameGain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/txtPriceGain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="price"
+            android:inputType="number"
+            android:textAlignment="textEnd"
+            android:textColor="@color/teal_700" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAddGain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:background="@drawable/date_btn"
+            android:onClick="addGainMethod"
+
+            android:text="Внести доход"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAddDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/date_btn"
+            android:onClick="setDateGains"
+            android:text="указать дату"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnShowCost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:background="@drawable/date_btn"
+            android:onClick="showCostmethod"
+
+            android:text="Показать расходы"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="0dp"
+        android:layout_height="195dp"
+        android:layout_marginTop="30dp"
+        android:background="#F4E07A"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+        <EditText
+            android:id="@+id/txtCostsMultiLine"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ems="10"
+            android:enabled="false"
+            android:gravity="start|top"
+            android:inputType="textMultiLine" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:text="Расходы"
+        android:textColor="@color/teal_700"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Доходы"
+        android:textColor="@color/teal_700"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="0dp"
+        android:layout_height="195dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="32dp"
+        android:background="#69F6AD"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+        <EditText
+            android:id="@+id/txtGainsMultiLine2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ems="10"
+            android:enabled="false"
+            android:gravity="start|top"
+            android:inputType="textMultiLine" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tmpDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginBottom="9dp"
+        android:text="TextView"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
+</androidx.constraintlayout.widget.ConstraintLayout>
